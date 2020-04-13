@@ -1,6 +1,8 @@
+// action function
 export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 
+// action creater
 export const removeFeature = (item) => {
   // dispatch an action here to remove an item
   console.log(item);

@@ -1,0 +1,34 @@
+1. Explain what Redux is and the problem it solves
+
+Redux is a state management library. Redux Cycle is: Store => UI => Event triggers => Action Creator => Action => Reducers => New State Tree
+
+Redux attempts to make state mutations predictable by imposing certain restrictions on how and when updates can happen. These restrictions are reflected in the three principles of Redux.
+
+(1) The state of your app is stored in an single state object. (2) State is Read-Only(immutable), the only way to change state is to emit an action - an object describing what happened. (3) Changes are made with Pure Functions by way of Reducers that take the previous state and an action and return the next state.
+
+2. Create a Redux Store and connect it to a React application
+
+Import {createStore} from 'redux'; - create a const for the store - invoke the createStore function
+
+The createStore function takes in a reducer - a reducer in it's simplest form is a function that returns an object - the returned object will represent the state tree
+
+import {Provider} from 'react-redux'; - wrap <App/> in the Provider component - pass the newly created store object to <Provider/>'s store prop
+
+3. Use the connect() function to "connect" React components to the Redux store
+
+Create a component that will be "connected" to the Redux Store - import {connect} from 'react-redux'; - instead of exporting the component, export the connect function call - inovoke connect twice: first call, pass in a function and an onbject - second call, pass in the component we're connecting
+
+mapStateToProps is a function that tells connect which peices of state to pass to the component - takes state as an argument - returns an object - the properties in the returned object are what get passed to the component as props - the values in the returned object are propperties from the state object
+
+4. Write Actions and Action Creators to describe state changes
+
+An action creator is a function that "creates" an action by returning an action object - an action type is created to avoid hidden bugs, and used as the type in the action - when the action creator is invoked, and the action is returned, it will be dispatched (under the hood) to the reducer
+
+5. Write Reducers to respond to actions and update state
+
+Reducers are pure functions - reducers take in the current state tree and an action as arguments - using a switch case to check the action type of the dispatched action, create an updated state tree based on the action type and the action payload - each case in the switch statement returns the new, updated state tree, triggering the UI to re-render with the new data
+
+to start, we import the action types from the action files - we also move the state tree that we started with into a const variable called initialState
+
+create the reducer function, pass in state with a default value of initialState, and the dispatched action - add the switch statement and check for the action type - make a case for each action type - using immutable priciples, update and return the state tree - return state for the default
+
