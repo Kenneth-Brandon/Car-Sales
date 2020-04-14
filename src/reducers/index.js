@@ -1,7 +1,7 @@
-import React, { useReducer } from "react";
+// import React, { useReducer } from "react";
 
 export const reducer = (state, action) => {
-  console.log("reducer fired!", action);
+  // console.log("reducer fired!", action);
   switch (action.type) {
     case "ADD_ITEM":
       if (state.car.features.includes(action.payload)) {
@@ -21,7 +21,7 @@ export const reducer = (state, action) => {
       }
 
     case "REMOVE_ITEM":
-      console.log("remove worked!");
+      // console.log("remove worked!");
       return {
         ...state,
         car: {
